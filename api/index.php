@@ -1,7 +1,4 @@
 <?php
-echo "<h1>¡Hola desde el index.php de Vercel!</h1>";
-die(); // Esto detiene la ejecución del script aquí
-// Resto de tu código PHP
 require_once 'includes/db.php';
 require_once 'includes/carrito.php';
 // Obtener productos destacados (los más recientes)
