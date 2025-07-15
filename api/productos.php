@@ -27,7 +27,7 @@ require_once 'includes/carrito.php';
     <title>Productos - Mi Tienda Online</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -105,10 +105,10 @@ require_once 'includes/carrito.php';
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Nuestros Productos</h2>
             <div>
-                <a href="admin/productos.php" class="btn btn-primary">
+            <a href="../admin/productos.php" class="btn btn-primary">
                     <i class="fas fa-cog"></i> Gestionar Productos
                 </a>
-                <a href="admin/upload.php" class="btn btn-success">
+                <a href="../admin/upload.php" class="btn btn-success">
                     <i class="fas fa-plus"></i> Nuevo Producto
                 </a>
             </div>
@@ -150,7 +150,7 @@ require_once 'includes/carrito.php';
                 <div class="col-md-3 mb-4">
                     <div class="product-card">
                         <?php if (!empty($producto['imagen']) && file_exists($producto['imagen'])): ?>
-                            <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" 
+                            <img src="<?php echo htmlspecialchars('../' . $producto['imagen']); ?>" 
                                  class="img-fluid mb-3" 
                                  alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
                         <?php else: ?>

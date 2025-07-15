@@ -1,6 +1,6 @@
 <?php
-require_once '../includes/db.php';    // ¡Añade '../' aquí!
-require_once '../includes/carrito.php'; // ¡Añade '../' también aquí!
+require_once 'includes/db.php';
+require_once 'includes/carrito.php';
 // Obtener productos destacados (los más recientes)
 $query = "SELECT p.*, c.nombre as categoria_nombre 
           FROM productos p 
