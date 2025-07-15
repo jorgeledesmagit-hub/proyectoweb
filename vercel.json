@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "api/index.php",
+      "use": "@php-zero/vercel-php",
+      "config": {
+        "runtime": "php-8.2"
+      }
+    },
+    {
+      "src": "api/**/*.php",
+      "use": "@vercel/static-build",
+      "config": {
+        "zeroConfig": true
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.php"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
+}
