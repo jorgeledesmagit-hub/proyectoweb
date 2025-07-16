@@ -1,17 +1,21 @@
 {
   "version": 2,
   "public": true,
+  "installCommand": "composer install --no-dev",
   "builds": [
     {
       "src": "api/index.php",
-      "use": "@php-runtime/vercel-php",
+      "use": "@vercel/php",
       "config": {
         "runtime": "php-8.2"
       }
     },
     {
       "src": "api/**/*.php",
-      "use": "@php-runtime/vercel-php"
+      "use": "@vercel/php",
+      "config": {
+        "runtime": "php-8.2"
+      }
     }
   ],
   "routes": [
