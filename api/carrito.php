@@ -222,7 +222,7 @@ if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
                             <?php endif; ?>
                             
                             <div class="d-flex justify-content-between mt-4">
-                                <a href="productos.php" class="btn btn-outline-primary">
+                                <a href="/ProyectoWeb/api/productos" class="btn btn-outline-primary">
                                     <i class="fas fa-arrow-left me-2"></i>Seguir Comprando
                                 </a>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#finalizarCompraModal">
@@ -245,7 +245,7 @@ if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="finalizarCompraForm">
+                    <form id="finalizarCompraForm" action="/ProyectoWeb/api/checkout" method="POST">
                         <input type="hidden" name="total" value="<?php echo $total; ?>">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre Completo</label>

@@ -5,7 +5,7 @@ require_once 'includes/carrito.php';
 // Verificar si hay productos en el carrito
 $carrito = obtenerCarrito($db);
 if (empty($carrito['items'])) {
-    header('Location: carrito.php');
+    header('Location: carrito');
     exit;
 }
 
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Te enviaremos un correo electrónico con los detalles de tu compra.</p>
                 <hr>
                 <p class="mb-0">
-                    <a href="index.php" class="btn btn-primary">Volver a la tienda</a>
+                    <a href="/ProyectoWeb/api/index" class="btn btn-primary">Volver a la tienda</a>
                 </p>
             </div>
         <?php else: ?>

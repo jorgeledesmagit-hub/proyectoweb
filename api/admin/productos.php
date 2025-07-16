@@ -219,9 +219,9 @@ if (isset($_GET['editar']) && !empty($_GET['editar'])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.php">
+                            <a class="nav-link" href="/ProyectoWeb/api/admin/index">
                                 <i class="fas fa-home me-2"></i>
-                                Ver Tienda
+                                Volver al panel
                             </a>
                         </li>
                         <li class="nav-item">
@@ -363,7 +363,7 @@ if (isset($_GET['editar']) && !empty($_GET['editar'])) {
                     <h5 class="modal-title" id="modalTitle">Nuevo Producto</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" action="/ProyectoWeb/api/admin/productos" enctype="multipart/form-data">
                     <div class="modal-body">
                         <input type="hidden" name="action" id="formAction" value="agregar">
                         <input type="hidden" name="id" id="productoId">
@@ -443,7 +443,7 @@ if (isset($_GET['editar']) && !empty($_GET['editar'])) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <form method="POST" style="display: inline;">
+                    <form method="POST" action="/ProyectoWeb/api/admin/productos" style="display: inline;">
                         <input type="hidden" name="action" value="eliminar">
                         <input type="hidden" name="id" id="eliminarId">
                         <button type="submit" class="btn btn-danger">Eliminar</button>

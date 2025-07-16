@@ -10,6 +10,6 @@ if (session_status() === PHP_SESSION_NONE) {
 $_SESSION['carrito'] = array();
 
 // Redirigir de vuelta al carrito con mensaje de éxito
-header('Location: carrito.php?success=carrito_vaciado');
+header('Location: carrito?success=carrito_vaciado');
 exit;
 ?> 

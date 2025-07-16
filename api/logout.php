@@ -20,6 +20,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Redirigir al inicio
-header('Location: index.php');
+header('Location: /ProyectoWeb/api/index');
 exit;
 ?> 

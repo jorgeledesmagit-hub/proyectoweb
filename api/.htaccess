@@ -1,0 +1,16 @@
+# Redirigir de .php a URL limpia
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.php[\s?] [NC]
+RewriteRule ^([^.]+)\.php$ /ProyectoWeb/api/$1 [R=301,L]
+
+# Reglas existentes
+RewriteEngine On
+
+# Redirigir URLs limpias a los archivos PHP correspondientes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([a-zA-Z0-9_\-]+)/?$ $1.php [L,QSA]
+
+# Para subcarpetas como admin
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/([a-zA-Z0-9_\-]+)/?$ admin/$1.php [L,QSA] 

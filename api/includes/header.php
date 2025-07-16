@@ -20,20 +20,20 @@ if (isset($_SESSION['carrito'])) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                <a class="nav-link" href="../../api/index.php">Inicio</a>
+                <a class="nav-link" href="/ProyectoWeb/api/index">Inicio</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="../../api/productos.php">Productos</a>
+                <a class="nav-link" href="/ProyectoWeb/api/productos">Productos</a>
                 </li>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li class="nav-item">
-                    <a class="nav-link" href="../../api/mis_pedidos.php">Mis Pedidos</a>
+                    <a class="nav-link" href="/ProyectoWeb/api/mis_pedidos">Mis Pedidos</a>
                     </li>
                 <?php endif; ?>
             </ul>
             <div class="d-flex align-items-center">
                 <!-- Carrito de Compras -->
-                <a href="../../api/carrito.php" class="btn btn-outline-light me-2 position-relative">
+                <a href="/ProyectoWeb/api/carrito" class="btn btn-outline-light me-2 position-relative">
                     <i class="fas fa-shopping-cart"></i>
                     <?php if ($total_items > 0): ?>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -49,20 +49,20 @@ if (isset($_SESSION['carrito'])) {
                             <i class="fas fa-user"></i> Mi Cuenta
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="../../api/perfil.php">Mi Perfil</a></li>
-                        <li><a class="dropdown-item" href="../../api/mis_pedidos.php">Mis Pedidos</a></li>
+                        <li><a class="dropdown-item" href="/ProyectoWeb/api/perfil">Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="/ProyectoWeb/api/mis_pedidos">Mis Pedidos</a></li>
                             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="../../api/admin/productos.php">Panel Admin</a></li>
+                                <li><a class="dropdown-item" href="/ProyectoWeb/api/admin/productos">Panel Admin</a></li>
                             <?php endif; ?>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="../../api/logout.php">Cerrar Sesión</a></li>
+                            <li><a class="dropdown-item" href="/ProyectoWeb/api/logout">Cerrar Sesión</a></li>
                         </ul>
                     </div>
                 <?php else: ?>
                     <!-- Usuario no logueado -->
-                    <a href="../../api/login.php" class="btn btn-outline-light me-2">Iniciar Sesión</a>
-                    <a href="../../api/registro.php" class="btn btn-light">Registrarse</a>
+                    <a href="/ProyectoWeb/api/login" class="btn btn-outline-light me-2">Iniciar Sesión</a>
+                    <a href="/ProyectoWeb/api/registro" class="btn btn-light">Registrarse</a>
                 <?php endif; ?>
             </div>
         </div>

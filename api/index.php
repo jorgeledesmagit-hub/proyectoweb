@@ -48,7 +48,7 @@ $productos = $db->query($query);
         <div class="container">
             <h1 class="display-4">Bienvenido a Mi Tienda Online</h1>
             <p class="lead">Descubre nuestra selección de productos de alta calidad</p>
-            <a href="productos.php" class="btn btn-light btn-lg">Ver Productos</a>
+            <a href="/ProyectoWeb/api/productos" class="btn btn-light btn-lg">Ver Productos</a>
         </div>
     </section>
 

@@ -20,9 +20,9 @@
             <div class="col-md-4 mb-4">
                 <h5>Enlaces Rápidos</h5>
                 <ul class="list-unstyled">
-                    <li><a href="/ProyectoWeb/index.php" class="text-muted">Inicio</a></li>
-                    <li><a href="/ProyectoWeb/productos.php" class="text-muted">Productos</a></li>
-                    <li><a href="/ProyectoWeb/carrito.php" class="text-muted">Carrito</a></li>
+                    <li><a href="/ProyectoWeb/api/index" class="text-muted">Inicio</a></li>
+                    <li><a href="/ProyectoWeb/api/productos" class="text-muted">Productos</a></li>
+                    <li><a href="/ProyectoWeb/api/carrito" class="text-muted">Carrito</a></li>
                 </ul>
             </div>
 
@@ -49,8 +49,8 @@
                 </p>
             </div>
             <div class="col-md-6 text-center text-md-end">
-                <a href="/ProyectoWeb/terminos.php" class="text-muted me-3">Términos y Condiciones</a>
-                <a href="/ProyectoWeb/privacidad.php" class="text-muted">Política de Privacidad</a>
+                <a href="/ProyectoWeb/api/terminos" class="text-muted me-3">Términos y Condiciones</a>
+                <a href="/ProyectoWeb/api/privacidad" class="text-muted">Política de Privacidad</a>
             </div>
         </div>
     </div>

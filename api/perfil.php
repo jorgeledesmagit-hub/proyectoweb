@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Verificar que el usuario esté logueado
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php?error=no_autenticado');
+    header('Location: login?error=no_autenticado');
     exit;
 }
 
@@ -22,7 +22,7 @@ $stmt->execute();
 $usuario = $stmt->get_result()->fetch_assoc();
 
 if (!$usuario) {
-    header('Location: logout.php');
+    header('Location: logout');
     exit;
 }
 
@@ -244,18 +244,18 @@ $stats['total_gastado'] = $stmt->get_result()->fetch_assoc()['total'] ?? 0;
                     </div>
                     <div class="card-body">
                         <div class="d-grid gap-2">
-                            <a href="mis_pedidos.php" class="btn btn-outline-primary">
+                            <a href="/ProyectoWeb/api/mis_pedidos" class="btn btn-outline-primary">
                                 <i class="fas fa-shopping-bag me-2"></i>Mis Pedidos
                             </a>
                             <?php if ($usuario['is_admin']): ?>
-                                <a href="admin/index.php" class="btn btn-outline-success">
+                                <a href="/ProyectoWeb/api/admin/index" class="btn btn-outline-success">
                                     <i class="fas fa-tachometer-alt me-2"></i>Panel de Administración
                                 </a>
                             <?php endif; ?>
-                            <a href="index.php" class="btn btn-outline-secondary">
+                            <a href="/ProyectoWeb/api/index" class="btn btn-outline-secondary">
                                 <i class="fas fa-home me-2"></i>Ir a la Tienda
                             </a>
-                            <a href="logout.php" class="btn btn-outline-danger">
+                            <a href="/ProyectoWeb/api/logout" class="btn btn-outline-danger">
                                 <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
                             </a>
                         </div>

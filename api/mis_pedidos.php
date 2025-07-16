@@ -145,7 +145,7 @@ $stats = $stmt->get_result()->fetch_assoc();
                         <i class="fas fa-shopping-bag fa-3x text-muted mb-3"></i>
                         <h3 class="text-muted">No tienes pedidos aún</h3>
                         <p class="text-muted">¡Haz tu primer pedido y comienza a comprar!</p>
-                        <a href="index.php" class="btn btn-primary">
+                        <a href="/ProyectoWeb/api/index" class="btn btn-outline-primary">
                             <i class="fas fa-shopping-cart me-2"></i>
                             Ir a la Tienda
                         </a>

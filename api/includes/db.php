@@ -5,10 +5,10 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Configuración de la base de datos
-$host = 'sql309.infinityfree.com';
-$usuario = 'if0_39151465';
-$password = '0aGODZIaHts2R';
-$database = 'if0_39151465_tienda_online';
+$host = 'localhost';
+$usuario = 'root';
+$password = '';
+$database = 'tienda_online';
 
 // Habilitar reporte de errores para debugging
 error_reporting(E_ALL);

@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Si ya está logueado, redirigir al inicio
 if (isset($_SESSION['user_id'])) {
-    header('Location: index.php');
+    header('Location: index');
     exit;
 }
 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_email'] = $user['email'];
                 $_SESSION['is_admin'] = $user['is_admin'];
                 
-                header('Location: index.php');
+                header('Location: index');
                 exit;
             } else {
                 $error = 'Contraseña incorrecta.';
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         <?php endif; ?>
                         
-                        <form method="POST" action="login.php">
+                        <form method="POST" action="/ProyectoWeb/api/login">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico</label>
                                 <input type="email" class="form-control" id="email" name="email" 

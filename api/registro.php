@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Si ya está logueado, redirigir al inicio
 if (isset($_SESSION['user_id'])) {
-    header('Location: index.php');
+    header('Location: index');
     exit;
 }
 
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         <?php endif; ?>
                         
-                        <form method="POST" action="registro.php">
+                        <form method="POST" action="/ProyectoWeb/api/registro">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre Completo</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" 
