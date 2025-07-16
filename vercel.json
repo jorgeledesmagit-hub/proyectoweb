@@ -4,14 +4,14 @@
   "builds": [
     {
       "src": "api/index.php",
-      "use": "@php-zero/vercel-php",
+      "use": "@php-runtime/vercel-php",
       "config": {
         "runtime": "php-8.2"
       }
     },
     {
       "src": "api/**/*.php",
-      "use": "@vercel/static-build"
+      "use": "@php-runtime/vercel-php"
     }
   ],
   "routes": [
