@@ -105,12 +105,6 @@ require_once 'includes/carrito.php';
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Nuestros Productos</h2>
             <div>
-            <a href="/proyectoweb/admin/productos.php" class="btn btn-primary">
-                    <i class="fas fa-cog"></i> Gestionar Productos
-                </a>
-                <a href="/proyectoweb/admin/upload.php" class="btn btn-success">
-                    <i class="fas fa-plus"></i> Nuevo Producto
-                </a>
             </div>
         </div>
 

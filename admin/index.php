@@ -133,9 +133,6 @@ $stats['pedidos_pendientes'] = $result->fetch_assoc()['total'];
                     <h1 class="h2">Dashboard</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
-                            <a href="/proyectoweb/productos.php" class="btn btn-sm btn-outline-primary">
-                                <i class="fas fa-plus"></i> Nuevo Producto
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -225,9 +222,6 @@ $stats['pedidos_pendientes'] = $result->fetch_assoc()['total'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
-                                        <a href="productos.php?action=nuevo" class="btn btn-primary w-100">
-                                            <i class="fas fa-plus me-2"></i>Agregar Producto
-                                        </a>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <a href="pedidos.php?estado=pendiente" class="btn btn-warning w-100">

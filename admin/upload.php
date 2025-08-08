@@ -8,7 +8,7 @@ session_start();
 
 // Función para logging
 function logError($message) {
-    $logDir = '../logs';
+    $logDir = __DIR__ . '/../logs'; // Ruta absoluta para el directorio de logs
     $logFile = $logDir . '/upload_errors.log';
     
     // Intentar crear el directorio si no existe
@@ -40,7 +40,10 @@ try {
 
     // Obtener mensajes de error o éxito de la URL
     $error_message = isset($_GET['error']) ? $_GET['error'] : '';
-    $success_message = isset($_GET['success']) ? 'Producto agregado exitosamente' : '';
+    $success_message = ''; // Inicializar para evitar la advertencia
+    if (isset($_GET['success'])) {
+        $success_message = 'Producto agregado exitosamente';
+    }
 
 } catch (Exception $e) {
     logError('Error: ' . $e->getMessage());
