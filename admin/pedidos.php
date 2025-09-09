@@ -352,6 +352,7 @@ $stats['ventas_totales'] = $result->fetch_assoc()['total'] ?? 0;
                                         <th>ID</th>
                                         <th>Cliente</th>
                                         <th>Contacto</th>
+                                        <th>Dirección de Envío</th>
                                         <th>Total</th>
                                         <th>Estado</th>
                                         <th>Fecha</th>
@@ -377,6 +378,7 @@ $stats['ventas_totales'] = $result->fetch_assoc()['total'] ?? 0;
                                                     <div><?php echo htmlspecialchars($pedido['email_cliente']); ?></div>
                                                     <div><?php echo htmlspecialchars($pedido['telefono']); ?></div>
                                                 </td>
+                                                <td><?php echo htmlspecialchars($pedido['direccion_envio'] ?? 'N/A'); ?></td>
                                                 <td>$<?php echo number_format($pedido['total'], 2); ?></td>
                                                 <td>
                                                     <?php

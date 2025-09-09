@@ -30,9 +30,9 @@
             <div class="col-md-4 mb-4">
                 <h5>Contacto</h5>
                 <ul class="list-unstyled text-muted">
-                    <li><i class="fas fa-map-marker-alt me-2"></i> Dirección: Calle Principal #123</li>
-                    <li><i class="fas fa-phone me-2"></i> Teléfono: (123) 456-7890</li>
-                    <li><i class="fas fa-envelope me-2"></i> Email: info@mitienda.com</li>
+                    <li><i class="fas fa-map-marker-alt me-2"></i> Dirección: Jose Marmol ####</li>
+                    <li><i class="fas fa-phone me-2"></i> Teléfono: (11) 3293-9021</li>
+                    <li><i class="fas fa-envelope me-2"></i> Email: jorgeledesma.ar@gmail.com</li>
                     <li><i class="fas fa-clock me-2"></i> Horario: Lunes a Viernes 9:00 - 18:00</li>
                 </ul>
             </div>
@@ -120,4 +120,34 @@
         text-align: center !important;
     }
 }
-</style> 
+</style>
+
+<!-- Modal para visualización de imágenes -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" id="modalImage" class="img-fluid rounded" alt="Imagen ampliada" style="max-height: 90vh;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/proyectoweb/assets/js/main.js"></script>
+
+<!-- Modal para visualización de imágenes -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" id="modalImage" class="img-fluid rounded" alt="Imagen ampliada" style="max-height: 90vh;">
+            </div>
+        </div>
+    </div>
+</div>

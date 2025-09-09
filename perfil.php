@@ -16,7 +16,7 @@ $mensaje = '';
 $tipo_mensaje = '';
 
 // Obtener información del usuario
-$stmt = $db->prepare("SELECT id, nombre, email, is_admin, fecha_registro FROM usuarios WHERE id = ?");
+$stmt = $db->prepare("SELECT id, nombre, email, is_admin, fecha_registro, telefono, direccion FROM usuarios WHERE id = ?");
 $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $usuario = $stmt->get_result()->fetch_assoc();
@@ -51,18 +51,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $mensaje = 'El email ya está en uso por otro usuario';
                         $tipo_mensaje = 'danger';
                     } else {
-                        $stmt = $db->prepare("UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?");
-                        $stmt->bind_param("ssi", $nombre, $email, $_SESSION['user_id']);
+                        $telefono = trim($_POST['telefono'] ?? '');
+                        $direccion = trim($_POST['direccion'] ?? '');
+
+                        $stmt = $db->prepare("UPDATE usuarios SET nombre = ?, email = ?, telefono = ?, direccion = ? WHERE id = ?");
+                        $stmt->bind_param("ssssi", $nombre, $email, $telefono, $direccion, $_SESSION['user_id']);
                         
                         if ($stmt->execute()) {
                             $_SESSION['user_name'] = $nombre;
                             $_SESSION['user_email'] = $email;
+                            // Actualizar también los datos en el array $usuario para que se reflejen inmediatamente
                             $usuario['nombre'] = $nombre;
                             $usuario['email'] = $email;
+                            $usuario['telefono'] = $telefono;
+                            $usuario['direccion'] = $direccion;
                             $mensaje = 'Perfil actualizado exitosamente';
                             $tipo_mensaje = 'success';
                         } else {
-                            $mensaje = 'Error al actualizar el perfil';
+                            $mensaje = 'Error al actualizar el perfil: ' . $stmt->error; // Añadir error para depuración
                             $tipo_mensaje = 'danger';
                         }
                     }
@@ -117,19 +123,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $stats = [];
 
 // Total de pedidos
-$stmt = $db->prepare("SELECT COUNT(*) as total FROM pedidos WHERE usuario_id = ?");
+$stmt = $db->prepare("SELECT COUNT(*) as total FROM ordenes WHERE usuario_id = ?");
 $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $stats['total_pedidos'] = $stmt->get_result()->fetch_assoc()['total'];
 
 // Pedidos pendientes
-$stmt = $db->prepare("SELECT COUNT(*) as total FROM pedidos WHERE usuario_id = ? AND estado = 'pendiente'");
+$stmt = $db->prepare("SELECT COUNT(*) as total FROM ordenes WHERE usuario_id = ? AND estado = 'pendiente'");
 $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $stats['pedidos_pendientes'] = $stmt->get_result()->fetch_assoc()['total'];
 
 // Total gastado
-$stmt = $db->prepare("SELECT SUM(total) as total FROM pedidos WHERE usuario_id = ? AND estado = 'entregado'");
+$stmt = $db->prepare("SELECT SUM(total) as total FROM ordenes WHERE usuario_id = ? AND estado = 'entregado'");
 $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $stats['total_gastado'] = $stmt->get_result()->fetch_assoc()['total'] ?? 0;
@@ -172,7 +178,9 @@ $stats['total_gastado'] = $stmt->get_result()->fetch_assoc()['total'] ?? 0;
                                 <h5>Información Personal</h5>
                                 <p><strong>Nombre:</strong> <?php echo htmlspecialchars($usuario['nombre']); ?></p>
                                 <p><strong>Email:</strong> <?php echo htmlspecialchars($usuario['email']); ?></p>
-                                <p><strong>Rol:</strong> 
+                                <p><strong>Teléfono:</strong> <?php echo htmlspecialchars($usuario['telefono'] ?? 'N/A'); ?></p>
+                                <p><strong>Dirección:</strong> <?php echo htmlspecialchars($usuario['direccion'] ?? 'N/A'); ?></p>
+                                <p><strong>Rol:</strong>
                                     <?php if ($usuario['is_admin']): ?>
                                         <span class="badge bg-primary">Administrador</span>
                                     <?php else: ?>
@@ -197,13 +205,22 @@ $stats['total_gastado'] = $stmt->get_result()->fetch_assoc()['total'] ?? 0;
                                     <input type="hidden" name="action" value="actualizar_perfil">
                                     <div class="mb-3">
                                         <label for="nombre" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" 
+                                        <input type="text" class="form-control" id="nombre" name="nombre"
                                                value="<?php echo htmlspecialchars($usuario['nombre']); ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" 
+                                        <input type="email" class="form-control" id="email" name="email"
                                                value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="telefono" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono"
+                                               value="<?php echo htmlspecialchars($usuario['telefono'] ?? ''); ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="direccion" class="form-label">Dirección de Envío</label>
+                                        <textarea class="form-control" id="direccion" name="direccion" rows="3"><?php echo htmlspecialchars($usuario['direccion'] ?? ''); ?></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-save me-2"></i>Actualizar Perfil
@@ -244,7 +261,7 @@ $stats['total_gastado'] = $stmt->get_result()->fetch_assoc()['total'] ?? 0;
                     </div>
                     <div class="card-body">
                         <div class="d-grid gap-2">
-                            <a href="/proyectoweb/admin/pedidos.php" class="btn btn-outline-primary">
+                            <a href="/proyectoweb/mis_pedidos_simple.php" class="btn btn-outline-primary">
                                 <i class="fas fa-shopping-bag me-2"></i>Mis Pedidos
                             </a>
                             <?php if ($usuario['is_admin']): ?>

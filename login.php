@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Por favor, completa todos los campos.';
     } else {
         // Buscar el usuario en la base de datos
-        $stmt = $db->prepare("SELECT id, nombre, email, password, is_admin FROM usuarios WHERE email = ?");
+        $stmt = $db->prepare("SELECT id, nombre, email, password, is_admin, telefono, direccion FROM usuarios WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -56,6 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_name'] = $user['nombre'];
                 $_SESSION['user_email'] = $user['email'];
                 $_SESSION['is_admin'] = $user['is_admin'];
+                $_SESSION['user_telefono'] = $user['telefono']; // Guardar teléfono en sesión
+                $_SESSION['user_direccion'] = $user['direccion']; // Guardar dirección en sesión
+                
+                // Verificar si el teléfono o la dirección están vacíos
+                if (empty($user['telefono']) || empty($user['direccion'])) {
+                    $_SESSION['info'] = 'Por favor, completa tu número de teléfono y dirección de envío.';
+                    header('Location: perfil.php');
+                    exit;
+                }
                 
                 header('Location: index.php');
                 exit;

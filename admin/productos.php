@@ -343,8 +343,9 @@ if (isset($_GET['editar']) && !empty($_GET['editar'])) {
                                             <td>
                                                 <?php if (!empty($producto['imagen']) && file_exists('../' . $producto['imagen'])): ?>
                                                     <img src="/proyectoweb/<?php echo htmlspecialchars($producto['imagen']); ?>?t=<?php echo time(); ?>"
-                                                         class="product-image rounded"
-                                                         alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                                                         class="product-image rounded img-zoomable"
+                                                         alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
+                                                         data-src-full="/proyectoweb/<?php echo htmlspecialchars($producto['imagen']); ?>">
                                                 <?php else: ?>
                                                     <div class="product-image bg-light d-flex align-items-center justify-content-center rounded">
                                                         <i class="fas fa-image text-muted"></i>

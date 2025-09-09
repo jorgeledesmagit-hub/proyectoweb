@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="mb-3">
                     <label class="form-label">Imagen actual</label><br>
                     <?php if (!empty($producto['imagen']) && file_exists('../' . $producto['imagen'])): ?>
-                        <img src="../<?php echo htmlspecialchars($producto['imagen']); ?>" alt="Imagen actual" style="max-width: 120px; max-height: 120px; object-fit: cover;">
+                        <img src="../<?php echo htmlspecialchars($producto['imagen']); ?>" alt="Imagen actual" style="max-width: 120px; max-height: 120px; object-fit: cover;" class="img-zoomable" data-src-full="../<?php echo htmlspecialchars($producto['imagen']); ?>">
                     <?php else: ?>
                         <span class="text-muted">Sin imagen</span>
                     <?php endif; ?>

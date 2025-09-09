@@ -186,4 +186,27 @@ body {
 .product-card .no-image p {
     margin: 0;
     font-size: 0.9rem;
-} 
+}
+
+/* Estilos para el Modal de Imagen */
+#imageModal .modal-content {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+}
+
+#imageModal .modal-header {
+    border-bottom: none;
+}
+
+#imageModal .btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%); /* Hace el icono blanco */
+}
+
+#imageModal .modal-body {
+    padding: 0;
+}
+
+#modalImage {
+    max-width: 100%;
+    max-height: 90vh; /* Limita la altura de la imagen al 90% del viewport */
+    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse */
+}

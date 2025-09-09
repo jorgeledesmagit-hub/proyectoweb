@@ -294,6 +294,8 @@ $stats['hoy'] = $result->fetch_assoc()['total'];
                                         <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Email</th>
+                                        <th>Teléfono</th>
+                                        <th>Dirección</th>
                                         <th>Rol</th>
                                         <th>Pedidos</th>
                                         <th>Fecha Registro</th>
@@ -316,6 +318,8 @@ $stats['hoy'] = $result->fetch_assoc()['total'];
                                                     <?php endif; ?>
                                                 </td>
                                                 <td><?php echo htmlspecialchars($usuario['email']); ?></td>
+                                                <td><?php echo htmlspecialchars($usuario['telefono'] ?? 'N/A'); ?></td>
+                                                <td><?php echo htmlspecialchars($usuario['direccion'] ?? 'N/A'); ?></td>
                                                 <td>
                                                     <?php if ($usuario['is_admin']): ?>
                                                         <span class="badge bg-primary role-badge">Administrador</span>

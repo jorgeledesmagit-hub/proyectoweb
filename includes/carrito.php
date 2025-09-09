@@ -144,10 +144,16 @@ function procesarOrden($db, $datos_cliente) {
                 $precio_unitario,
                 $subtotal
             );
-            $stmt->execute();
+            if (!$stmt->execute()) {
+                error_log("Error al insertar detalle de orden: " . $stmt->error);
+                throw new Exception("Error al guardar detalles del pedido.");
+            }
 
             // Actualizar el stock
-            $db->query("UPDATE productos SET stock = stock - $cantidad WHERE id = $producto_id");
+            if (!$db->query("UPDATE productos SET stock = stock - $cantidad WHERE id = $producto_id")) {
+                error_log("Error al actualizar stock: " . $db->error);
+                throw new Exception("Error al actualizar el stock del producto.");
+            }
         }
 
         $db->commit();

@@ -61,9 +61,10 @@ $productos = $db->query($query);
                 <div class="col-md-3 mb-4">
                     <div class="product-card">
                         <?php if (!empty($producto['imagen']) && file_exists($producto['imagen'])): ?>
-                            <img src="/proyectoweb/<?php echo htmlspecialchars($producto['imagen']); ?>" 
-                                 class="img-fluid mb-3" 
-                                 alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                            <img src="/proyectoweb/<?php echo htmlspecialchars($producto['imagen']); ?>"
+                                 class="img-fluid mb-3 img-zoomable"
+                                 alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
+                                 data-src-full="/proyectoweb/<?php echo htmlspecialchars($producto['imagen']); ?>">
                         <?php else: ?>
                             <div class="no-image mb-3">
                                 <i class="fas fa-image fa-3x"></i>

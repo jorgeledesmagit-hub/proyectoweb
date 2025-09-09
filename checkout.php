@@ -9,6 +9,7 @@ if (empty($carrito['items'])) {
     exit;
 }
 
+
 $error = null;
 $success = false;
 
@@ -89,25 +90,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <form method="POST" id="checkout-form">
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre completo</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" 
-                                           value="<?php echo isset($_POST['nombre']) ? htmlspecialchars($_POST['nombre']) : ''; ?>" required>
+                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                           value="<?php echo isset($_SESSION['user_name']) ? htmlspecialchars($_SESSION['user_name']) : (isset($_POST['nombre']) ? htmlspecialchars($_POST['nombre']) : ''); ?>" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" 
-                                           value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           value="<?php echo isset($_SESSION['user_email']) ? htmlspecialchars($_SESSION['user_email']) : (isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''); ?>" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="telefono" class="form-label">Teléfono</label>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono" 
-                                           value="<?php echo isset($_POST['telefono']) ? htmlspecialchars($_POST['telefono']) : ''; ?>" required>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono"
+                                           value="<?php echo isset($_SESSION['user_telefono']) ? htmlspecialchars($_SESSION['user_telefono']) : (isset($_POST['telefono']) ? htmlspecialchars($_POST['telefono']) : ''); ?>" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="direccion" class="form-label">Dirección de envío</label>
-                                    <textarea class="form-control" id="direccion" name="direccion" rows="3" required><?php echo isset($_POST['direccion']) ? htmlspecialchars($_POST['direccion']) : ''; ?></textarea>
+                                    <textarea class="form-control" id="direccion" name="direccion" rows="3" required><?php echo isset($_SESSION['user_direccion']) ? htmlspecialchars($_SESSION['user_direccion']) : (isset($_POST['direccion']) ? htmlspecialchars($_POST['direccion']) : ''); ?></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Confirmar Pedido</button>
